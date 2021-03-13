@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET', 'POST'])
-def hello():
+def localTesting():
 
     if request.method == "POST":
         
