@@ -58,13 +58,11 @@
         
         var speed = 3;
         
-        //Possible fix for how diagonal movement seems to be so much faster
-        //Not sure about it though. C.D.
-
-        // if((this.cursorKeys.right.isDown || this.cursorKeys.left.isDown) &&
-        // (this.cursorKeys.down.isDown || this.cursorKeys.up.isDown)){
-        //     speed = Math.sqrt(Math.pow(speed,2),Math.pow(speed,2));
-        // }
+        //Calculates the real speed if moving diagonally.
+        if((this.cursorKeys.right.isDown || this.cursorKeys.left.isDown) &&
+        (this.cursorKeys.down.isDown || this.cursorKeys.up.isDown)){
+            speed = Math.sqrt((speed * speed) / 2)
+        }
 
         if(this.cursorKeys.right.isDown){
             circle.x += speed;
