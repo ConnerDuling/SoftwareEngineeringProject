@@ -55,19 +55,29 @@
     }
 
     function update(){
+        
+        var speed = 3;
+        
+        //Possible fix for how diagonal movement seems to be so much faster
+        //Not sure about it though. C.D.
 
-       if(this.cursorKeys.right.isDown){
-           circle.x += 3;
-       }
-       if(this.cursorKeys.left.isDown){
-           circle.x -= 3;
-       }
-       if(this.cursorKeys.up.isDown){
-           circle.y -= 3;
-       }
-       if(this.cursorKeys.down.isDown){
-           circle.y += 3;
-       }
+        // if((this.cursorKeys.right.isDown || this.cursorKeys.left.isDown) &&
+        // (this.cursorKeys.down.isDown || this.cursorKeys.up.isDown)){
+        //     speed = Math.sqrt(Math.pow(speed,2),Math.pow(speed,2));
+        // }
+
+        if(this.cursorKeys.right.isDown){
+            circle.x += speed;
+        }
+        if(this.cursorKeys.left.isDown){
+            circle.x -= speed;
+        }
+        if(this.cursorKeys.up.isDown){
+            circle.y -= speed;
+        }
+        if(this.cursorKeys.down.isDown){
+            circle.y += speed;
+        }
 
     }
     </script>
