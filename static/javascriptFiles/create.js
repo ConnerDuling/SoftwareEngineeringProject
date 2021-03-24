@@ -2,7 +2,7 @@ function create ()
     {
         carpet = this.add.image(0,0,'carpet').setOrigin(0,0);
 
-        carpet.setScale(.5);
+        carpet.setScale(.6);
 
         this.cursorKeys = this.input.keyboard.createCursorKeys();
 
