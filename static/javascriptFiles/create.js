@@ -4,7 +4,7 @@ function create ()
 
         carpet.setScale(.6);
 
-        this.cursorKeys = this.input.keyboard.createCursorKeys();
+        wall = this.physics.add.image(200,200, 'wall');
 
         circle = this.physics.add.image(100,100, 'circle');
         circle.setCollideWorldBounds(true);

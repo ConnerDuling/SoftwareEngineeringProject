@@ -1,11 +1,13 @@
 function update(){
         
-    movement();
+    movement;
 
 }
 
 function movement(){
     
+    this.cursorKeys = this.input.keyboard.createCursorKeys();
+
     var speed = 5;
     
     //Calculates the real speed if moving diagonally
