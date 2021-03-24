@@ -2,12 +2,15 @@ function update(){
         
     var speed = 3;
     
-    //Calculates the real speed if moving diagonally.
+    //Calculates the real speed if moving diagonally
+    //and updates speed to the derived number for that frame.
     if((this.cursorKeys.right.isDown || this.cursorKeys.left.isDown) &&
     (this.cursorKeys.down.isDown || this.cursorKeys.up.isDown)){
-        speed = Math.sqrt((speed * speed) / 2)
+        speed = Math.sqrt((speed * speed) / 2.0)
     }
 
+    //Checks if user input of direction
+    //keys are pressed for that frame
     if(this.cursorKeys.right.isDown){
         circle.x += speed;
     }
