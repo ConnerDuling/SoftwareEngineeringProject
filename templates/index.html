@@ -5,6 +5,13 @@
     <meta charset='utf-8'>
     <title>Overclocked</title>
     <script src="static/phaser.js"></script>
+
+    <!--The js files that are to be used
+    for running the game-->
+    <script src="static/javascriptFiles/preload.js"></script>
+    <script src="static/javascriptFiles/create.js"></script>
+    <script src="static/javascriptFiles/update.js"></script>
+
 </head>
 <body>
 
@@ -17,6 +24,8 @@
             default: 'arcade',
         },
         scene: {
+            //Calls the three main functions
+            //that run the game itself
             preload: preload,
             create: create,
             update: update
@@ -25,59 +34,8 @@
 
     var game = new Phaser.Game(config);
 
-    function preload ()
-    {
-        this.load.image('circle', 'static/assets/images/GreenCircleTransperantBackground.png');
-        
-    }
-
     var circle;
 
-    function create ()
-    {
-
-        this.cursorKeys = this.input.keyboard.createCursorKeys();
-
-        circle = this.physics.add.image(100,100, 'circle');
-        circle.setCollideWorldBounds(true);
-        
-        //circle.setCollideWorldBounds(true);
-
-        // var circles = []
-        // for(var i = 0; i < 30; i++){
-        //     circles[i] = this.physics.add.image(i*30, 100+i*20, 'logo');
-
-        //     circles[i].setVelocity(100, 200);
-        //     circles[i].setBounce(1, 1);
-        //     circles[i].setCollideWorldBounds(true);
-
-        // }
-    }
-
-    function update(){
-        
-        var speed = 3;
-        
-        //Calculates the real speed if moving diagonally.
-        if((this.cursorKeys.right.isDown || this.cursorKeys.left.isDown) &&
-        (this.cursorKeys.down.isDown || this.cursorKeys.up.isDown)){
-            speed = Math.sqrt((speed * speed) / 2)
-        }
-
-        if(this.cursorKeys.right.isDown){
-            circle.x += speed;
-        }
-        if(this.cursorKeys.left.isDown){
-            circle.x -= speed;
-        }
-        if(this.cursorKeys.up.isDown){
-            circle.y -= speed;
-        }
-        if(this.cursorKeys.down.isDown){
-            circle.y += speed;
-        }
-
-    }
     </script>
 
 </body>
