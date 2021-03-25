@@ -8,7 +8,7 @@ function movement(gameObject){
     
     var cursorKeys = gameObject.input.keyboard.createCursorKeys();
 
-    var speed = 100;
+    var speed = 200;
     
     //Calculates the real speed if moving diagonally
     //and updates speed to the derived number for that frame.
@@ -20,14 +20,17 @@ function movement(gameObject){
     //keys are pressed for that frame
     if(cursorKeys.right.isDown){
        gameObject.circle.setVelocityX(speed)
+    }else if(cursorKeys.left.isDown){
+        gameObject.circle.setVelocityX((-speed))
+    }else{
+        gameObject.circle.setVelocityX(0);
     }
-    if(cursorKeys.left.isDown){
-       gameObject.circle.setVelocityX((-speed))
-    }
+
     if(cursorKeys.up.isDown){
        gameObject.circle.setVelocityY((-speed))
-    }
-    if(cursorKeys.down.isDown){
-       gameObject.circle.setVelocityY(speed)
+    }else if(cursorKeys.down.isDown){
+        gameObject.circle.setVelocityY(speed)
+     }else{
+        gameObject.circle.setVelocityY(0);
     }
 }
