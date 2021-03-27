@@ -57,9 +57,13 @@ function create ()
         this.physics.add.collider(monkey, workzones[k]);
     } */
 
-    
-
-
+    var bug = this.physics.add.image(50,50, 'bug');
+    this.physics.add.collider(walls, bug);
+    this.physics.add.collider(walls, this.circle);
+    this.physics.add.overlap(monkey, this.circle, function hurt(){console.log("player has been touched by bug")});
+    this.timeInSeconds = 60;
+    //TODO: Find a way to make a bug move and stop at a set interval
+  
     //Sample of collision detection that will be used for enemies later.
     //this.physics.add.collider(this.circle, walls, function func(){console.log("I'm sad")}, null, this);
 
