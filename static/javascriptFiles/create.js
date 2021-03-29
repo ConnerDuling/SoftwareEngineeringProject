@@ -33,14 +33,14 @@ function create ()
     var inFlag = false;
     this.physics.add.overlap(workzones, this.circle, function isIn(){console.log("Is in")});
 
-    var fc = this.physics.add.image(10,10,'fCreep');
+    var fc = this.physics.add.image(10,10,'fc');
     fc.setVelocity(100, 100);
     fc.setBounce(1,1);
     fc.setCollideWorldBounds(true);
     this.physics.add.overlap(fc, this.circle, function hurt(){console.log("player has been touched by creep")});
 
 
-    this.physics.add.collider(fc, workzones);
+    //this.physics.add.collider(fc, workzones);
 
 
     var monkey = this.physics.add.image(40,40, 'monkey');
@@ -52,7 +52,7 @@ function create ()
     this.physics.add.overlap(monkey, this.circle, function hurt(){console.log("player has been touched by monkey")});
 
 
-    this.physics.add.collider(monkey, workzones);
+    //this.physics.add.collider(monkey, workzones);
 
 
     var bug = this.physics.add.image(50,50, 'bug');
