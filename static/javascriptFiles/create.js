@@ -25,7 +25,7 @@ function create ()
     } */
 
     //Circle objects that below to this (Game)
-    this.circle = this.physics.add.image(100,100, 'circle');
+    this.circle = this.physics.add.image(100,100, 'green_circle');
 
     //Keeps circle from leaving the windows of the Game
     this.circle.setCollideWorldBounds(true);
@@ -38,11 +38,10 @@ function create ()
     fc.setBounce(1,1);
     fc.setCollideWorldBounds(true);
     this.physics.add.overlap(fc, this.circle, function hurt(){console.log("player has been touched by creep")});
-    //I've tried to make it so that the FC or the Monkey does not go inside work zones but it results in them both bouncing in a really strange way and getting stuck
-    //Don't use this unless you plan to fix it or question your sanity.
-    /* for(var j = 0; j < 4; j++){
-        this.physics.add.collider(fc, workzones[j]);
-    } */
+
+
+    this.physics.add.collider(fc, workzones);
+
 
     var monkey = this.physics.add.image(40,40, 'monkey');
     monkey.setBounce(1,1);
@@ -51,11 +50,10 @@ function create ()
     this.physics.add.collider(walls, monkey);
     this.physics.add.collider(walls, this.circle);
     this.physics.add.overlap(monkey, this.circle, function hurt(){console.log("player has been touched by monkey")});
-    //I've tried to make it so that the FC or the Monkey does not go inside work zones but it results in them both bouncing in a really strange way and getting stuck
-    //Don't use this unless you plan to fix it or question your sanity.
-  /*   for(var k = 0; k < 4; k++){
-        this.physics.add.collider(monkey, workzones[k]);
-    } */
+
+
+    this.physics.add.collider(monkey, workzones);
+
 
     var bug = this.physics.add.image(50,50, 'bug');
     this.physics.add.collider(walls, bug);
