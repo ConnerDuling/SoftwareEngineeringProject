@@ -8,11 +8,13 @@ function create ()
     //Wall group for all office walls that are not window boudries
     var walls = this.physics.add.staticGroup();
 
-    walls.create(400,250, 'wall').setScale(.4).refreshBody();
+    walls.add(this.add.rectangle(this.cameras.main.width/2,this.cameras.main.height/2,10,350, 0xffffff))
+    walls.add(this.add.rectangle(this.cameras.main.width/2,this.cameras.main.height/2,450,10, 0xffffff))
+
+    //walls.create(400,250, 'wall').setScale(.4).refreshBody();
     //walls.create(300,300, 'wall').setScale(.6).refreshBody();
 
     //Workzone objects
-  
     workzones = [4]
     workzones[0] = this.physics.add.image(0,0, 'blue_workzone').setOrigin(0,0);
     workzones[1] = this.physics.add.image(this.cameras.main.width-108,0, 'red_workzone').setOrigin(0,0);
