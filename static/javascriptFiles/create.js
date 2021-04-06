@@ -12,29 +12,28 @@ function create ()
     this.walls.add(this.add.rectangle(this.cameras.main.width/2,this.cameras.main.height/2,450,10, 0xffffff))
 
     //Workzone objects
-    workzones = [4]
+    this.workzones = [4]
     var workStationOffset = 108;
-    workzones[0] = this.physics.add.image(0,0, 'blue_workzone').setOrigin(0,0);
-    workzones[1] = this.physics.add.image(this.cameras.main.width-workStationOffset,0, 'red_workzone').setOrigin(0,0);
-    workzones[2] = this.physics.add.image(0,this.cameras.main.height-workStationOffset, 'green_workzone').setOrigin(0,0);
-    workzones[3] = this.physics.add.image(this.cameras.main.width-workStationOffset,this.cameras.main.height-108, 'yellow_workzone').setOrigin(0,0);
+    this.workzones[0] = this.physics.add.image(0,0, 'blue_workzone').setOrigin(0,0);
+    this.workzones[1] = this.physics.add.image(this.cameras.main.width-workStationOffset,0, 'red_workzone').setOrigin(0,0);
+    this.workzones[2] = this.physics.add.image(0,this.cameras.main.height-workStationOffset, 'green_workzone').setOrigin(0,0);
+    this.workzones[3] = this.physics.add.image(this.cameras.main.width-workStationOffset,this.cameras.main.height-108, 'yellow_workzone').setOrigin(0,0);
 
 
     //Circle objects that below to this (Game)
-    this.circle = this.physics.add.image(100,100, 'green_circle');
+    this.circle = new Character(this);
+
+    console.log(this.circle);
 
     //Keeps circle from leaving the windows of the Game
-    this.circle.setCollideWorldBounds(true);
-    this.physics.add.collider(this.walls, this.circle);
-    
-    this.physics.add.overlap(workzones, this.circle, function isIn(){console.log("Is in")});
+
 
 
     //this.physics.add.collider(fc, workzones);
 
     enemies = [];
 
-    enemies.push(new Bug(this, this.cameras.main.width/2,
+    enemies.push(new Monkey(this, this.cameras.main.width/2,
                             this.cameras.main.height/2));
 
     console.log(enemies);

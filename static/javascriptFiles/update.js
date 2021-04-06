@@ -19,18 +19,18 @@ function movement(gameObject){
     //Checks if user input of direction
     //keys are pressed for that frame
     if(cursorKeys.right.isDown){
-       gameObject.circle.setVelocityX(speed)
+       gameObject.circle.picture.setVelocityX(speed)
     }else if(cursorKeys.left.isDown){
-        gameObject.circle.setVelocityX((-speed))
+        gameObject.circle.picture.setVelocityX((-speed))
     }else{
-        gameObject.circle.setVelocityX(0);
+        gameObject.circle.picture.setVelocityX(0);
     }
 
     if(cursorKeys.up.isDown){
-       gameObject.circle.setVelocityY((-speed))
+       gameObject.circle.picture.setVelocityY((-speed))
     }else if(cursorKeys.down.isDown){
-        gameObject.circle.setVelocityY(speed)
+        gameObject.circle.picture.setVelocityY(speed)
      }else{
-        gameObject.circle.setVelocityY(0);
+        gameObject.circle.picture.setVelocityY(0);
     }
 }
