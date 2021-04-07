@@ -4,6 +4,7 @@ function create ()
     this.carpet = this.add.image(0,0,'carpet').setOrigin(0,0);
     this.carpet.setScale(.6);
 
+    enemies = [];
     
     //Wall group for all office walls that are not window boudries
     this.walls = this.physics.add.staticGroup();
@@ -28,16 +29,41 @@ function create ()
     //Keeps circle from leaving the windows of the Game
 
 
-
     //this.physics.add.collider(fc, workzones);
 
-    enemies = [];
 
-    enemies.push(new Monkey(this, this.cameras.main.width/2,
-                            this.cameras.main.height/2));
+    //Spawn in new enemies on a timer
+    var spawnDelaySeconds = 5
+    var spawnConfig = {
+        loop: true,
+        delay: (1000 * spawnDelaySeconds),
+        callback: addNewEnemyToGame,
+        args: [enemies, this]
+    }
+    this.time.addEvent(spawnConfig);
 
-    console.log(enemies);
+}
 
+function addNewEnemyToGame(enemies, game){
 
-    //TODO: Find a way to make a bug move and stop at a set interval
+    /*Will need to track valid spawn points
+    for different maps and have them change
+    based on which level has been loaded*/
+    var spawnX = game.cameras.main.width/2;
+    var spawnY = game.cameras.main.height/2;
+
+    switch(Math.floor(Math.random() * 3)){
+        case 0:
+            enemies.push(new Bug(game, spawnX,
+                spawnY));
+            break;
+        case 1:
+            enemies.push(new FeatureCreep(game, spawnX,
+                spawnY));
+            break;
+        case 2:
+            enemies.push(new Monkey(game, spawnX,
+                spawnY));
+            break;
+    }
 }
