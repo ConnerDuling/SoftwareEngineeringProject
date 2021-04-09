@@ -1,6 +1,7 @@
 function update(){
 
     movement(this);
+    this.scoreTest.setText('Points: ' + this.taskPts);
 
 }
 

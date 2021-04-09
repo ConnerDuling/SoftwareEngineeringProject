@@ -19,7 +19,13 @@ function create ()
     this.workzones[1] = this.physics.add.image(this.cameras.main.width-workStationOffset,0, 'red_workzone').setOrigin(0,0);
     this.workzones[2] = this.physics.add.image(0,this.cameras.main.height-workStationOffset, 'green_workzone').setOrigin(0,0);
     this.workzones[3] = this.physics.add.image(this.cameras.main.width-workStationOffset,this.cameras.main.height-108, 'yellow_workzone').setOrigin(0,0);
+    this.taskPts = 0;
+    this.scoreTest = this.add.text(0, 0, '');
+    this.scoreTest.setDepth(100);
+    
+    
 
+    
 
     //Circle objects that below to this (Game)
     this.circle = new Character(this);

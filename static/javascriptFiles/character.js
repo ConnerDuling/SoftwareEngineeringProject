@@ -9,5 +9,9 @@ function Character(game){
     game.physics.add.collider(game.walls, this.picture);
 
     //Overlap with workstation
-    game.physics.add.overlap(game.workzones, this.picture, function isIn(){console.log("Is in")});
+    game.physics.add.overlap(game.workzones, this.picture, function isIn(){
+        console.log("You are touching the workstation");
+        game.workzones[0].setInteractive();
+        game.workzones[0].on('pointerdown', () => {game.taskPts += 1});
+    });
 }
