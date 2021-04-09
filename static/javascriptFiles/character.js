@@ -10,8 +10,14 @@ function Character(game){
 
     //Overlap with workstation
     game.physics.add.overlap(game.workzones, this.picture, function isIn(){
+        overlap = true
         console.log("You are touching the workstation");
-        game.workzones[0].setInteractive();
-        game.workzones[0].on('pointerdown', () => {game.taskPts += 1});
+        //an interactive way to get points, 
+        //a problem is still happening where if you are outside of the workstation, you can still click it for points
+        game.workzones[0].setInteractive().on('pointerup', function pointGain(){
+            if(overlap == true){
+                game.taskPts += 1;
+            }
+        });
     });
 }
