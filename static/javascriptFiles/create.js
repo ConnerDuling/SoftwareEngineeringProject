@@ -23,19 +23,9 @@ function create ()
     this.scoreTest = this.add.text(0, 0, '');
     this.scoreTest.setDepth(100);
     
-    
 
-    
-
-    //Circle objects that below to this (Game)
+    //Character objects that below to this (Game)
     this.circle = new Character(this, 'green_circle');
-
-    console.log(this.circle);
-
-    //Keeps circle from leaving the windows of the Game
-
-
-    //this.physics.add.collider(fc, workzones);
 
 
     //Spawn in new enemies on a timer
