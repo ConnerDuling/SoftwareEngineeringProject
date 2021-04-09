@@ -28,7 +28,7 @@ function create ()
     
 
     //Circle objects that below to this (Game)
-    this.circle = new Character(this);
+    this.circle = new Character(this, 'green_circle');
 
     console.log(this.circle);
 
