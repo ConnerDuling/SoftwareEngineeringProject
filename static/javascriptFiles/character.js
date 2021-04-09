@@ -13,11 +13,11 @@ function Character(game){
         overlap = true
         console.log("You are touching the workstation");
         //an interactive way to get points, 
-        //a problem is still happening where if you are outside of the workstation, you can still click it for points
+        //a problem is still happening where if you are outside of the workstation, 
+        //you can still click it for points
         game.workzones[0].setInteractive().on('pointerup', function pointGain(){
-            if(overlap == true){
+            //if(this.picture.getBounds() == game.workzone[0].getBounds())
                 game.taskPts += 1;
-            }
         });
     });
 }
