@@ -1,6 +1,7 @@
 function Enemy(game, xPosition, yPosition, bounceBool, setCollideBool, pictureName){
 
     this.picture = game.physics.add.image(xPosition, yPosition, pictureName);
+    this.health = 3;
 
     //This enemy should bounce off the walls to move around
     if (bounceBool){
