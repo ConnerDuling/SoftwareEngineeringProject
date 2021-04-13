@@ -25,17 +25,10 @@ function create ()
     this.scoreTest = this.add.text(0, 0, '');
     this.scoreTest.setDepth(100);
     
-<<<<<<< HEAD
-
-    //Character objects that below to this (Game)
-    this.circle = new Character(this, 'green_circle');
-
-=======
     
-    //Circle objects that below to this (Game)
+    //Circle objects that belong to this (Game)
     this.circle = new Character(this, 'green_circle');
 
->>>>>>> f9097cf59a784e9044287b03b84398af7e364654
 
     //Set up enemy spawner for the Game
     var spawnDelaySeconds = 5
