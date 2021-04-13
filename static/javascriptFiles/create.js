@@ -4,8 +4,8 @@ function create ()
     this.carpet = this.add.image(0,0,'carpet').setOrigin(0,0);
     this.carpet.setScale(.6);
 
-    enemies = [];
-    
+    this.enemies = [];
+
     //Wall group for all office walls that are not window boudries
     this.walls = this.physics.add.staticGroup();
 
@@ -38,7 +38,7 @@ function create ()
         loop: true,
         delay: (1000 * spawnDelaySeconds),
         callback: addNewEnemyToGame,
-        args: [enemies, this]
+        args: [this.enemies, this]
     }
     this.time.addEvent(spawnConfig);
 

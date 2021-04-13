@@ -30,6 +30,15 @@ function Enemy(game, xPosition, yPosition, bounceBool, setCollideBool, pictureNa
     if(setCollideBool){
     game.physics.add.collider(game.walls, this.picture);
     }
+
+    game.physics.add.overlap(game.enemies, this.picture, function attackEnemy(){
+        
+        var eKey = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        if(Phaser.Input.Keyboard.JustDown(eKey)){
+            
+        }
+    });
+
 };
 
 function skitter(picture){
@@ -56,15 +65,15 @@ function pickDirection(){
 
 function Monkey(game, xPosition, yPosition){
 
-    Enemy.call(this, game, xPosition, yPosition, true, true, 'monkey');
+    Enemy.call(this, game, xPosition, yPosition, true, true, 'blue_circle');
 };
 
 function FeatureCreep(game, xPosition, yPosition){
 
-    Enemy.call(this, game, xPosition, yPosition, true, false, 'feature_creep');
+    Enemy.call(this, game, xPosition, yPosition, true, false, 'red_circle');
 };
 
 function Bug(game, xPosition, yPosition){
 
-    Enemy.call(this, game, xPosition, yPosition, false, true, 'bug');
+    Enemy.call(this, game, xPosition, yPosition, false, true, 'yellow_circle');
 };
