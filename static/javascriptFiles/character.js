@@ -10,15 +10,10 @@ function Character(game, pictureName){
 
     //Overlap with workstation
     game.physics.add.overlap(game.workzones, this.picture, function workzoneOverlap(){
-        //console.log("You are touching the workstation");
         
         var eKey = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         if(Phaser.Input.Keyboard.JustDown(eKey)){
                 game.taskPts += 1;
         }
-
-        // game.workzones[0].setInteractive().on('pointerup', function pointGain(){
-        //     //if(this.picture.getBounds() == game.workzone[0].getBounds())
-        // });
     });
 }
