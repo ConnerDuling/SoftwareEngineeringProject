@@ -8,6 +8,9 @@ function preload ()
 
         this.load.image('wall', 'static/assets/images/protoWall.png')
 
+        this.load.image('bug_enemy', 'static/assets/images/EnemyBug.png')
+        this.load.image('feature_creep_enemy', 'static/assets/images/EnemyFeatureCreep.png')
+        this.load.image('monkey_enemy', 'static/assets/images/EnemyMonkey.png')
 
         this.load.image('blue_workzone', 'static/assets/images/SquareBlueTransperantBackground.png')
         this.load.image('red_workzone', 'static/assets/images/SquareRedTransperantBackground.png')

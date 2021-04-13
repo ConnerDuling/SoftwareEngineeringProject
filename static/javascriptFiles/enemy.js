@@ -1,6 +1,7 @@
 function Enemy(game, xPosition, yPosition, bounceBool, setCollideBool, pictureName){
 
     this.picture = game.physics.add.image(xPosition, yPosition, pictureName);
+    this.picture.setScale(.125)
     this.health = 3;
 
     //This enemy should bounce off the walls to move around
@@ -31,22 +32,25 @@ function Enemy(game, xPosition, yPosition, bounceBool, setCollideBool, pictureNa
     game.physics.add.collider(game.walls, this.picture);
     }
 
-    game.physics.add.overlap(game.enemies, this.picture, function attackEnemy(){
-        
-        var eKey = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-        if(Phaser.Input.Keyboard.JustDown(eKey)){
-            
-        }
+    game.physics.add.overlap(this.picture, game.circle.picture, function takeDamage(enemy){
+        // console.log(enemy.displayList)
+        enemy.destroy();
     });
 
 };
 
 function skitter(picture){
     var speed = 250
-    //console.log("Skittering");
-    picture.setVelocityX(speed * pickDirection());
-    picture.setVelocityY(speed * pickDirection());
+    
+    console.log(picture);
 
+    //Prevents Bug type from trying to move after
+    //being removed from display list, and before
+    //being removed from enemy array from Create
+    if(picture.displayList != null){
+        picture.setVelocityX(speed * pickDirection());
+        picture.setVelocityY(speed * pickDirection());
+    }
 }
 
 function pickDirection(){
@@ -65,15 +69,15 @@ function pickDirection(){
 
 function Monkey(game, xPosition, yPosition){
 
-    Enemy.call(this, game, xPosition, yPosition, true, true, 'blue_circle');
+    Enemy.call(this, game, xPosition, yPosition, true, true, 'monkey_enemy');
 };
 
 function FeatureCreep(game, xPosition, yPosition){
 
-    Enemy.call(this, game, xPosition, yPosition, true, false, 'red_circle');
+    Enemy.call(this, game, xPosition, yPosition, true, false, 'feature_creep_enemy');
 };
 
 function Bug(game, xPosition, yPosition){
 
-    Enemy.call(this, game, xPosition, yPosition, false, true, 'yellow_circle');
+    Enemy.call(this, game, xPosition, yPosition, false, true, 'bug_enemy');
 };
