@@ -1,11 +1,11 @@
 function update(){
 
-    movement(this);
+    characterMovement(this);
     this.scoreTest.setText('Points: ' + this.taskPts);
 
 }
 
-function movement(gameObject){
+function characterMovement(gameObject){
     
     var cursorKeys = gameObject.input.keyboard.createCursorKeys();
 
