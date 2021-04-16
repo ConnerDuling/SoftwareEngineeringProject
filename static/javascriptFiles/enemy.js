@@ -12,8 +12,6 @@ class Enemy extends Phaser.Physics.Arcade.Image {
         this.setScale(.125);
         this.health = 3;
 
-        console.log(this);
-
         //This enemy should bounce off the walls to move around
         if (bounceBool){
             this.setBounce(1,1);
@@ -44,7 +42,6 @@ class Enemy extends Phaser.Physics.Arcade.Image {
 
         for(var i = 0; i < game.characters.length; i++){
             game.physics.add.overlap(this, game.characters[i], function takeDamage(enemy){
-                // console.log(enemy.displayList)
                 var eKey = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
                 if(Phaser.Input.Keyboard.JustDown(eKey)){
                         //Add check of Character type for extra damage from specialists
@@ -54,7 +51,6 @@ class Enemy extends Phaser.Physics.Arcade.Image {
                         //      We just deal one damage
 
                         enemy.health -= 1;
-                        console.log(enemy.health);
 
                         //If the enemy has been reduced to zero or less, destroy it
                         if(enemy.health <= 0){
