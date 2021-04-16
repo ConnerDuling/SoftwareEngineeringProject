@@ -40,16 +40,14 @@ function Enemy(game, xPosition, yPosition, bounceBool, setCollideBool, pictureNa
 };
 
 function skitter(picture){
-    var speed = 250
-    
-    console.log(picture);
+    var skitterSpeed = 250
 
     //Prevents Bug type from trying to move after
     //being removed from display list, and before
     //being removed from enemy array from Create
     if(picture.displayList != null){
-        picture.setVelocityX(speed * pickDirection());
-        picture.setVelocityY(speed * pickDirection());
+        picture.setVelocityX(skitterSpeed * pickDirection());
+        picture.setVelocityY(skitterSpeed * pickDirection());
     }
 }
 
