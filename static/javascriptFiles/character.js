@@ -3,6 +3,7 @@ class Character extends Phaser.Physics.Arcade.Image {
         super(game, xPosition, yPosition, pictureName);
     
         this.speed = 200;
+        this.storeSpeed = 200;
 
         /*Adds this Character to the game's physics.
         *Vital for intearacting with collisions and overlaps.
