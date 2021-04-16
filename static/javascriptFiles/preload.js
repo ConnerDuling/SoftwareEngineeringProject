@@ -1,6 +1,7 @@
 function preload ()
     {
         this.load.image('carpet', 'static/assets/images/CarpetBackground.png');
+        
         this.load.image('green_circle', 'static/assets/images/CircleGreenTransperantBackground.png');
         this.load.image('red_circle', 'static/assets/images/CircleRedTransperantBackground.png');
         this.load.image('yellow_circle', 'static/assets/images/CircleYellowTransperantBackground.png');

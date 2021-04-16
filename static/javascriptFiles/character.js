@@ -4,6 +4,9 @@ class Character extends Phaser.Physics.Arcade.Image {
     
         this.speed = 200;
 
+        /*Adds this Character to the game's physics.
+        *Vital for intearacting with collisions and overlaps.
+        */
         game.add.existing(this);
         game.physics.add.existing(this);
 
@@ -26,7 +29,30 @@ class Character extends Phaser.Physics.Arcade.Image {
     }
 }
 
-function Programmer(game, xPosition, yPosition, pictureName){
+class SoftwareProgrammer extends Character{
+    constructor(game, xPosition, yPosition){
 
-    Character.call(this, game, xPosition, yPosition, pictureName);
-};
+        super(game, xPosition, yPosition, 'red_circle');
+    }
+}
+
+class SoftwareDeveloper extends Character{
+    constructor(game, xPosition, yPosition){
+
+        super(game, xPosition, yPosition, 'green_circle');
+    }
+}
+
+class QualityTester extends Character{
+    constructor(game, xPosition, yPosition){
+
+        super(game, xPosition, yPosition, 'yellow_circle');
+    }
+}
+
+class RequirementsEngineer extends Character{
+    constructor(game, xPosition, yPosition){
+
+        super(game, xPosition, yPosition, 'blue_circle');
+    }
+}
