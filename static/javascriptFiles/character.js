@@ -1,6 +1,7 @@
 function Character(game, pictureName){
     
     this.picture = game.physics.add.image(100,100, pictureName);
+    this.speed = 200;
 
     //Collide with outer bounds
     this.picture.setCollideWorldBounds(true);
