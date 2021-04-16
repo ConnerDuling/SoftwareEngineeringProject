@@ -2,7 +2,7 @@ function Enemy(game, xPosition, yPosition, bounceBool, setCollideBool, pictureNa
 
     this.picture = game.physics.add.image(xPosition, yPosition, pictureName);
     this.picture.setScale(.125)
-    this.health = 3;
+    this.picture.health = 3;
 
     //This enemy should bounce off the walls to move around
     if (bounceBool){
@@ -32,11 +32,28 @@ function Enemy(game, xPosition, yPosition, bounceBool, setCollideBool, pictureNa
     game.physics.add.collider(game.walls, this.picture);
     }
 
-    game.physics.add.overlap(this.picture, game.circle.picture, function takeDamage(enemy){
-        // console.log(enemy.displayList)
-        enemy.destroy();
-    });
+    for(var i = 0; i < game.characters.length; i++){
+        game.physics.add.overlap(this.picture, game.characters[i].picture, function takeDamage(enemy){
+            // console.log(enemy.displayList)
+            var eKey = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+            if(Phaser.Input.Keyboard.JustDown(eKey)){
+                    //Add check of Character type for extra damage from specialists
+                    //if() Enemy Weakness == Player Role
+                    //      Deal 2 damage
+                    //else
+                    //      We just deal one damage
 
+                    enemy.health -= 1;
+                    console.log(enemy.health);
+
+                    //If the enemy has been reduced to zero or less, destroy it
+                    if(enemy.health <= 0){
+                        enemy.destroy();
+                    }
+                    
+            }
+        });
+    }
 };
 
 function skitter(picture){
