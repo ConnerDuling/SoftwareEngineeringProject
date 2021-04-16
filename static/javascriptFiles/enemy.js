@@ -87,7 +87,7 @@ class FeatureCreep extends Enemy{
         game.physics.add.overlap(this, game.characters, function setUpSlow(enemy, character){
 
 
-            if(!(character instanceof SoftwareDeveloper)){
+            if(!(character instanceof RequirementsEngineer)){
             character.speed = 50;
             var slowConfig = {loop: false,
                 delay: 2 * 1000,
