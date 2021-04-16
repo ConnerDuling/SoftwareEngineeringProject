@@ -1,7 +1,7 @@
 class Enemy extends Phaser.Physics.Arcade.Image {
     constructor(game, xPosition, yPosition, bounceBool, setCollideBool, pictureName){
 
-        super(game, xPosition, yPosition, pictureName)
+        super(game, xPosition, yPosition, pictureName);
         
         
 
@@ -43,7 +43,7 @@ class Enemy extends Phaser.Physics.Arcade.Image {
         }
 
         for(var i = 0; i < game.characters.length; i++){
-            game.physics.add.overlap(this, game.characters[i].picture, function takeDamage(enemy){
+            game.physics.add.overlap(this, game.characters[i], function takeDamage(enemy){
                 // console.log(enemy.displayList)
                 var eKey = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
                 if(Phaser.Input.Keyboard.JustDown(eKey)){
