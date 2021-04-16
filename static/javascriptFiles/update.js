@@ -24,19 +24,19 @@ function characterMovement(gameObject){
         //Checks if user input of direction
         //keys are pressed for that frame
         if(cursorKeys.right.isDown){
-        gameObject.characters[i].picture.setVelocityX(appliedSpeed)
+        gameObject.characters[i].setVelocityX(appliedSpeed)
         }else if(cursorKeys.left.isDown){
-            gameObject.characters[i].picture.setVelocityX((-appliedSpeed))
+            gameObject.characters[i].setVelocityX((-appliedSpeed))
         }else{
-            gameObject.characters[i].picture.setVelocityX(0);
+            gameObject.characters[i].setVelocityX(0);
         }
 
         if(cursorKeys.up.isDown){
-        gameObject.characters[i].picture.setVelocityY((-appliedSpeed))
+        gameObject.characters[i].setVelocityY((-appliedSpeed))
         }else if(cursorKeys.down.isDown){
-            gameObject.characters[i].picture.setVelocityY(appliedSpeed)
+            gameObject.characters[i].setVelocityY(appliedSpeed)
         }else{
-            gameObject.characters[i].picture.setVelocityY(0);
+            gameObject.characters[i].setVelocityY(0);
         }
     }
 
