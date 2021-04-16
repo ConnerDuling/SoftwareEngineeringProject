@@ -1,6 +1,6 @@
-function Character(game, pictureName){
+function Character(game, xPosition, yPosition, pictureName){
     
-    this.picture = game.physics.add.image(100,100, pictureName);
+    this.picture = game.physics.add.image(xPosition,yPosition, pictureName);
     this.speed = 200;
 
     //Collide with outer bounds
@@ -17,3 +17,8 @@ function Character(game, pictureName){
         }
     });
 }
+
+function Programmer(game, xPosition, yPosition, pictureName){
+
+    Character.call(this, game, xPosition, yPosition, pictureName);
+};
