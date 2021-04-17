@@ -77,6 +77,17 @@ class Monkey extends Enemy{
 
     constructor(game, xPosition, yPosition){
         super(game, xPosition, yPosition, true, true, 'monkey_enemy');
+        game.physics.add.overlap(this, game.characters, function setUpSlow(enemy, character){
+            if(!(character instanceof SoftwareProgrammer)){
+                character.speed = -character.speed;
+                var dizzyConfig = {loop: false,
+                    delay: 2 * 1000,
+                    callback: undoDizzy,
+                    args: [character]
+                }
+                game.time.addEvent(dizzyConfig);
+            }
+        });
     }
 };
 
@@ -104,6 +115,10 @@ class FeatureCreep extends Enemy{
 };
     
 function undoSlow(character){
+    character.speed = character.storeSpeed;
+}
+
+function undoDizzy(character){
     character.speed = character.storeSpeed;
 }
 
