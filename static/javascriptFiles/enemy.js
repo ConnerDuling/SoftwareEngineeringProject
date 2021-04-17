@@ -77,8 +77,8 @@ class Monkey extends Enemy{
 
     constructor(game, xPosition, yPosition){
         super(game, xPosition, yPosition, true, true, 'monkey_enemy');
-        game.physics.add.overlap(this, game.characters, function setUpSlow(enemy, character){
-            if(!(character instanceof SoftwareProgrammer)){
+        game.physics.add.overlap(this, game.characters, function setUpDizzy(enemy, character){
+            if(!(character instanceof SoftwareProgrammer) && character.invuln == 0){
                 character.speed = -character.speed;
                 var dizzyConfig = {loop: false,
                     delay: 2 * 1000,
@@ -86,6 +86,14 @@ class Monkey extends Enemy{
                     args: [character]
                 }
                 game.time.addEvent(dizzyConfig);
+
+                character.invuln = 1;
+                var invulnSlow = {loop: false,
+                    delay: 2 * 1000,
+                    callback: removeInvuln,
+                    args: [character]
+                }   
+                game.time.addEvent(invulnSlow);
             }
         });
     }
@@ -98,7 +106,7 @@ class FeatureCreep extends Enemy{
         game.physics.add.overlap(this, game.characters, function setUpSlow(enemy, character){
 
 
-            if(!(character instanceof SoftwareDeveloper)){
+            if(!(character instanceof SoftwareDeveloper) && character.invuln == 0){
             character.speed = 50;
             var slowConfig = {loop: false,
                 delay: 2 * 1000,
@@ -106,7 +114,17 @@ class FeatureCreep extends Enemy{
                 args: [character]
             }
             game.time.addEvent(slowConfig);
+
+            character.invuln = 1;
+            var invulnSlow = {loop: false,
+                delay: 2 * 1000,
+                callback: removeInvuln,
+                args: [character]
+            }   
+            game.time.addEvent(invulnSlow);
             }
+
+            
 
         });
     }
@@ -120,6 +138,10 @@ function undoSlow(character){
 
 function undoDizzy(character){
     character.speed = character.storeSpeed;
+}
+
+function removeInvuln(character){
+    character.invuln = 0;
 }
 
 class Bug extends Enemy{
