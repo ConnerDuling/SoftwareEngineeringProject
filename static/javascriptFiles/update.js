@@ -25,7 +25,7 @@ function characterMovement(gameObject){
         //keys are pressed for that frame
         if(cursorKeys.right.isDown && fFlag == 0){
         gameObject.characters[i].setVelocityX(appliedSpeed)
-        }else if(cursorKeys.left.isDown && gameObject.characters[i].fearFlag == 0){
+        }else if(cursorKeys.left.isDown && fFlag == 0){
             gameObject.characters[i].setVelocityX((-appliedSpeed))
         }else if(fFlag == 0){
             gameObject.characters[i].setVelocityX(0);
