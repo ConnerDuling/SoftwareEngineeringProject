@@ -83,7 +83,7 @@ class Monkey extends Enemy{
                 character.speed = -character.speed;
                 var dizzyConfig = {loop: false,
                     delay: 2 * 1000,
-                    callback: undoDizzy,
+                    callback: undoEffect,
                     args: [character]
                 }
                 game.time.addEvent(dizzyConfig);
@@ -112,7 +112,7 @@ class FeatureCreep extends Enemy{
             character.speed = 50;
             var slowConfig = {loop: false,
                 delay: 2 * 1000,
-                callback: undoSlow,
+                callback: undoEffect,
                 args: [character]
             }
             game.time.addEvent(slowConfig);
@@ -135,11 +135,7 @@ class FeatureCreep extends Enemy{
     
 };
     
-function undoSlow(character){
-    character.speed = character.storeSpeed;
-}
-
-function undoDizzy(character){
+function undoEffect(character){
     character.speed = character.storeSpeed;
 }
 
