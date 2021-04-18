@@ -1,6 +1,6 @@
 function preload ()
     {
-        this.load.text('generic', 'static/assets/images/genericTasks.txt');
+        this.load.text('generic', 'static/assets/text/genericTasks.txt');
         this.load.image('carpet', 'static/assets/images/CarpetBackground.png');
         
         this.load.image('green_circle', 'static/assets/images/CircleGreenTransperantBackground.png');
