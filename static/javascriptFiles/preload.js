@@ -7,6 +7,10 @@ function preload ()
         this.load.image('red_circle', 'static/assets/images/CircleRedTransperantBackground.png');
         this.load.image('yellow_circle', 'static/assets/images/CircleYellowTransperantBackground.png');
         this.load.image('blue_circle', 'static/assets/images/CircleBlueTransperantBackground.png');
+        this.load.image('soft_Dev', 'static/assets/images/Player3.png');
+        this.load.image('soft_Prog', 'static/assets/images/Player2.png');
+        this.load.image('qa_Test', 'static/assets/images/Player4.png');
+        this.load.image('req_Eng', 'static/assets/images/Player1.png');
 
         this.load.image('wall', 'static/assets/images/protoWall.png')
 
