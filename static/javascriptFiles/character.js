@@ -3,6 +3,7 @@ class Character extends Phaser.Physics.Arcade.Image {
         super(game, xPosition, yPosition, pictureName);
         
         this.invuln = 0;
+        this.fearFlag = 0;
         this.speed = 200;
         this.storeSpeed = 200;
 

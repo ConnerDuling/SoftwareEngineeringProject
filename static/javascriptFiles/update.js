@@ -12,7 +12,7 @@ function characterMovement(gameObject){
 
         //Grab speed of character, in case their speed is modified.
         var appliedSpeed = gameObject.characters[i].speed;
-
+        var fFlag = gameObject.characters[i].fearFlag;
         var cursorKeys = gameObject.input.keyboard.createCursorKeys();
 
         //Calculates the real speed if moving diagonally
@@ -23,19 +23,19 @@ function characterMovement(gameObject){
         }
         //Checks if user input of direction
         //keys are pressed for that frame
-        if(cursorKeys.right.isDown){
+        if(cursorKeys.right.isDown && fFlag == 0){
         gameObject.characters[i].setVelocityX(appliedSpeed)
-        }else if(cursorKeys.left.isDown){
+        }else if(cursorKeys.left.isDown && gameObject.characters[i].fearFlag == 0){
             gameObject.characters[i].setVelocityX((-appliedSpeed))
-        }else{
+        }else if(fFlag == 0){
             gameObject.characters[i].setVelocityX(0);
         }
 
-        if(cursorKeys.up.isDown){
+        if(cursorKeys.up.isDown && fFlag == 0){
         gameObject.characters[i].setVelocityY((-appliedSpeed))
-        }else if(cursorKeys.down.isDown){
-            gameObject.characters[i].setVelocityY(appliedSpeed)
-        }else{
+        }else if(cursorKeys.down.isDown  && fFlag == 0){
+            gameObject.characters[i].setVelocityY(appliedSpeed) 
+        }else if(fFlag == 0){
             gameObject.characters[i].setVelocityY(0);
         }
     }

@@ -164,12 +164,19 @@ class Bug extends Enemy{
         game.physics.add.overlap(this, game.characters, function setUpFear(enemy, character){
 
             if(!(character instanceof QualityTester) && character.invuln == 0){
+                character.speed = 350;
+                character.fearFlag = 1;
+                character.setVelocityX(0);
+                character.setVelocityY(0);
+                character.setVelocityX(500 * pickDirection());
+                character.setVelocityY(500 * pickDirection());
 
-            var fearConfig = {loop: false,
-                delay: 2 * 1000,
-                callback: undoFear,
-                args: [character]
-            }
+
+                var fearConfig = {loop: false,
+                    delay: 2 * 1000,
+                    callback: undoFear,
+                    args: [character]
+                }
             game.time.addEvent(fearConfig);
 
             character.invuln = 1;
@@ -188,6 +195,7 @@ class Bug extends Enemy{
 }
 
 function undoFear(character){
+    character.fearFlag = 0;
     character.speed = character.storeSpeed;
 }
 
