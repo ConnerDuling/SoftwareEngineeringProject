@@ -77,6 +77,27 @@ class Monkey extends Enemy{
 
     constructor(game, xPosition, yPosition){
         super(game, xPosition, yPosition, true, true, 'monkey_enemy');
+        game.physics.add.overlap(this, game.characters, function setUpDizzy(enemy, character){
+            //when a code monkey touches a player, they become Dizzy/Confused, meaning their inputs are reversed for a set time
+            if(!(character instanceof SoftwareDeveloper) && character.invuln == 0){
+                character.speed = -character.speed;
+                var dizzyConfig = {loop: false,
+                    delay: 2 * 1000,
+                    callback: undoDizzy,
+                    args: [character]
+                }
+                game.time.addEvent(dizzyConfig);
+
+                //enables the invulnerability
+                character.invuln = 1;
+                var invulnInterval = {loop: false,
+                    delay: 2 * 1000,
+                    callback: removeInvuln,
+                    args: [character]
+                }   
+                game.time.addEvent(invulnInterval);
+            }
+        });
     }
 };
 
@@ -86,8 +107,8 @@ class FeatureCreep extends Enemy{
         super(game, xPosition, yPosition, true, false, 'feature_creep_enemy');
         game.physics.add.overlap(this, game.characters, function setUpSlow(enemy, character){
 
-
-            if(!(character instanceof RequirementsEngineer)){
+            //when a character is touched by feature creep they are slowed, meaning that they only go 1/4th the movement speed of a player
+            if(!(character instanceof RequirementsEngineer) && character.invuln == 0){
             character.speed = 50;
             var slowConfig = {loop: false,
                 delay: 2 * 1000,
@@ -95,7 +116,18 @@ class FeatureCreep extends Enemy{
                 args: [character]
             }
             game.time.addEvent(slowConfig);
+
+            //enables the invunlerability
+            character.invuln = 1;
+            var invulnInterval = {loop: false,
+                delay: 2 * 1000,
+                callback: removeInvuln,
+                args: [character]
+            }   
+            game.time.addEvent(invulnInterval);
             }
+
+            
 
         });
     }
@@ -105,6 +137,14 @@ class FeatureCreep extends Enemy{
     
 function undoSlow(character){
     character.speed = character.storeSpeed;
+}
+
+function undoDizzy(character){
+    character.speed = character.storeSpeed;
+}
+
+function removeInvuln(character){
+    character.invuln = 0;
 }
 
 class Bug extends Enemy{
@@ -119,7 +159,36 @@ class Bug extends Enemy{
         }
 
         game.time.addEvent(scitterConfig);
+
+        //when a bug touches a character they become afraid, when afraid, they are faster but out of the players control (they dont respond to player movement)
+        game.physics.add.overlap(this, game.characters, function setUpFear(enemy, character){
+
+            if(!(character instanceof QualityTester) && character.invuln == 0){
+
+            var fearConfig = {loop: false,
+                delay: 2 * 1000,
+                callback: undoFear,
+                args: [character]
+            }
+            game.time.addEvent(fearConfig);
+
+            character.invuln = 1;
+            var invulnInterval = {loop: false,
+                delay: 2 * 1000,
+                callback: removeInvuln,
+                args: [character]
+            }   
+            game.time.addEvent(invulnInterval);
+            }
+
+            
+
+        });
     }
+}
+
+function undoFear(character){
+    character.speed = character.storeSpeed;
 }
 
 function skitter(picture, skitterSpeed) {
