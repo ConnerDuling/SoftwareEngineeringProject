@@ -168,8 +168,8 @@ class Bug extends Enemy{
                 character.fearFlag = 1;
                 character.setVelocityX(0);
                 character.setVelocityY(0);
-                character.setVelocityX(500 * pickDirection());
-                character.setVelocityY(500 * pickDirection());
+                character.setVelocityX(character.speed * pickDirection());
+                character.setVelocityY(character.speed * pickDirection());
 
 
                 var fearConfig = {loop: false,
