@@ -19,7 +19,11 @@ function characterMovement(gameObject){
         //and updates speed to the derived number for that frame.
         if((cursorKeys.right.isDown || cursorKeys.left.isDown) &&
         (cursorKeys.down.isDown || cursorKeys.up.isDown)){
-            appliedSpeed = Math.sqrt((appliedSpeed * appliedSpeed) / 2.0)
+            if(appliedSpeed < 0){
+                appliedSpeed = -(Math.sqrt((appliedSpeed * appliedSpeed) / 2.0))
+            }else{
+                appliedSpeed = Math.sqrt((appliedSpeed * appliedSpeed) / 2.0)
+            }
         }
         //Checks if user input of direction
         //keys are pressed for that frame
