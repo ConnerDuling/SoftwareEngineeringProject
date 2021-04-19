@@ -5,6 +5,8 @@ class Character extends Phaser.Physics.Arcade.Image {
         this.invuln = 0;
         this.fearFlag = 0;
         this.speed = 200;
+        //True speed of the character that should remain constant
+        //to act as a reset if an effect would change this.
         this.storeSpeed = 200;
 
         /*Adds this Character to the game's physics.
