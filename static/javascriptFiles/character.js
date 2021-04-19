@@ -45,8 +45,8 @@ class SoftwareProgrammer extends Character{
         this.sProgTasks = [];
         this.sProgTasks.push(new task("Implement feature.", 200));
         this.sProgTasks.push(new task("Create an Algorithm.", 200));
-        this.sProgTasks.push(new task("Print your changes to the code.", 200));
-        this.sProgTasks.push(new task("create a class diagram.", 200));
+        this.sProgTasks.push(new task("Print your revisions of the code.", 200));
+        this.sProgTasks.push(new task("Create a class diagram.", 200));
         this.sProgTasks.push(new task("Get permission from IT.", 200));
     }
 }
@@ -57,7 +57,7 @@ class SoftwareDeveloper extends Character{
         this.sDevTasks = [];
         this.sDevTasks.push(new task("Research new software designs.", 200));
         this.sDevTasks.push(new task("File your documentation.", 200));
-        this.sDevTasks.push(new task("Provide maintenence", 200));
+        this.sDevTasks.push(new task("Provide maintenence.", 200));
         this.sDevTasks.push(new task("Make a sequence diagram.", 200));
         this.sDevTasks.push(new task("Make some calls for research purposes.", 200));
     }
