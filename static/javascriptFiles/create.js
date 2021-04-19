@@ -15,10 +15,10 @@ function create ()
     //Workzone objects
     this.workzones = [4]
     var workStationOffset = 108;
-    this.workzones[0] = this.physics.add.image(0,0, 'blue_workzone').setOrigin(0,0);
-    this.workzones[1] = this.physics.add.image(this.cameras.main.width-workStationOffset,0, 'red_workzone').setOrigin(0,0);
-    this.workzones[2] = this.physics.add.image(0,this.cameras.main.height-workStationOffset, 'green_workzone').setOrigin(0,0);
-    this.workzones[3] = this.physics.add.image(this.cameras.main.width-workStationOffset,this.cameras.main.height-108, 'yellow_workzone').setOrigin(0,0);
+    this.workzones[0] = new BlueWorkStation(this,0,0);
+    this.workzones[1] = new RedWorkStation(this,this.cameras.main.width-workStationOffset,0);
+    this.workzones[2] = new GreenWorkStation(this, 0,this.cameras.main.height-workStationOffset);
+    this.workzones[3] = new YellowWorkStation(this, this.cameras.main.width-workStationOffset,this.cameras.main.height-workStationOffset)
     
     
     this.taskPts = 0;
@@ -43,6 +43,7 @@ function create ()
 
 }
 
+//Limiters on enemy count for each enemy type
 var monkeyCount = 0;
 var bugCount = 0;
 var featureCreepCount = 0;
