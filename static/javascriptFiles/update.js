@@ -19,6 +19,7 @@ function characterMovement(gameObject){
         //and updates speed to the derived number for that frame.
         if((cursorKeys.right.isDown || cursorKeys.left.isDown) &&
         (cursorKeys.down.isDown || cursorKeys.up.isDown)){
+            //If appliedSpeed is < 0, that means Character is dizzy, and should have the negative preserved despite squaring appliedSpeed
             if(appliedSpeed < 0){
                 appliedSpeed = -(Math.sqrt((appliedSpeed * appliedSpeed) / 2.0))
             }else{
