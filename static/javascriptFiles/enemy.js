@@ -70,9 +70,6 @@ function pickDirection(){
     }
 }
 
-//Sample of collision detection that will be used for enemies later.
-//this.physics.add.collider(this.circle, walls, function func(){console.log("I'm sad")}, null, this);
-
 class Monkey extends Enemy{
 
     constructor(game, xPosition, yPosition){
@@ -83,7 +80,7 @@ class Monkey extends Enemy{
                 character.speed = -character.speed;
                 var dizzyConfig = {loop: false,
                     delay: 2 * 1000,
-                    callback: undoEffect,
+                    callback: restoreSpeed,
                     args: [character]
                 }
                 game.time.addEvent(dizzyConfig);
@@ -112,7 +109,7 @@ class FeatureCreep extends Enemy{
             character.speed = 50;
             var slowConfig = {loop: false,
                 delay: 2 * 1000,
-                callback: undoEffect,
+                callback: restoreSpeed,
                 args: [character]
             }
             game.time.addEvent(slowConfig);
@@ -135,7 +132,7 @@ class FeatureCreep extends Enemy{
     
 };
     
-function undoEffect(character){
+function restoreSpeed(character){
     character.speed = character.storeSpeed;
 }
 
