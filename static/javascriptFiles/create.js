@@ -28,7 +28,10 @@ function create ()
     
     //Circle objects that belong to this (Game)
     this.characters = []
-    this.characters.push(new SoftwareProgrammer(this, 100, 100));
+    this.characters.push(new RequirementsEngineer(this, 100, 100));
+    this.characters.push(new QualityTester(this, 700, 700));
+    this.characters.push(new SoftwareProgrammer(this, 700, 100));
+    this.characters.push(new SoftwareDeveloper(this, 100, 700));
 
 
     //Set up enemy spawner for the Game
