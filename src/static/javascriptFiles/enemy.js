@@ -10,21 +10,21 @@ class Enemy extends Phaser.Physics.Arcade.Image {
         //Sets collission with outer walls.
         this.setCollideWorldBounds(true);
 
-        //this = game.physics.add.image(xPosition, yPosition, pictureName);
         this.setScale(.125);
         this.health = 3;
 
         //This enemy should bounce off the walls to move around
         if (bounceBool){
             this.setBounce(1,1);
-            this.setVelocity(150*plusOrMinus(),150*plusOrMinus());
+
+            //Sets initial velocity in one of four directions by multiplying constant by plusOrMinus()
+            this.setVelocity(150 * plusOrMinus(),150 * plusOrMinus());
         }        
 
         //Sets collission with inner walls
         if(setCollideBool){
             game.physics.add.collider(game.walls, this);
         }
-
 
         //Make listener for all 4 Characters to damage Enemy
         for(var i = 0; i < game.characters.length; i++){
@@ -49,22 +49,23 @@ class Enemy extends Phaser.Physics.Arcade.Image {
             });
         }
     
-    this.checkWeakness = function(character){
-        
-        if(this instanceof Bug && character instanceof QualityTester)
-            return true
-        else if(this instanceof FeatureCreep && character instanceof RequirementsEngineer)
-            return true
-        else if(this instanceof Monkey && character instanceof SoftwareDeveloper)
-            return true
+    //Checks to see if the character type matches the enemy type that called this function
+    //If so, return true
+        this.checkWeakness = function(character){
+            
+            if(this instanceof Bug && character instanceof QualityTester)
+                return true
+            else if(this instanceof FeatureCreep && character instanceof RequirementsEngineer)
+                return true
+            else if(this instanceof Monkey && character instanceof SoftwareDeveloper)
+                return true
+            else if(this instanceof SpaghettiCode && character instanceof SoftwareProgrammer)
+                return true
 
-        return false
-    }
-
+            return false
+        }
     }
 }
-
-
 
 function plusOrMinus() {
     switch(Math.floor(Math.random() * 2)){
@@ -182,11 +183,11 @@ class Bug extends Enemy{
                 character.setVelocityY(character.speed * pickDirection());
 
 
-                var fearConfig = {loop: false,
-                    delay: 2 * 1000,
-                    callback: undoFear,
-                    args: [character]
-                }
+            var fearConfig = {loop: false,
+                delay: 2 * 1000,
+                callback: undoFear,
+                args: [character]
+            }
             game.time.addEvent(fearConfig);
 
             character.invuln = 1;
@@ -196,10 +197,8 @@ class Bug extends Enemy{
                 args: [character]
             }   
             game.time.addEvent(invulnInterval);
-            }
-
             
-
+            }
         });
     }
 }
@@ -218,4 +217,48 @@ function skitter(picture, skitterSpeed) {
         picture.setVelocityX(skitterSpeed * pickDirection());
         picture.setVelocityY(skitterSpeed * pickDirection());
     }
+}
+
+class SpaghettiCode extends Enemy{
+
+    constructor(game, xPosition, yPosition){
+        super(game, xPosition, yPosition, false, true, 'spaghetti_enemy');
+
+        this.trackingEnemyId = pickRandomPlayer(game);
+
+        var trackConfig = {loop: true,
+        delay: 300,
+        callback: characterTracking,
+        args: [100, this, game.characters[this.trackingEnemyId]]
+        }
+
+        game.time.addEvent(trackConfig);
+    }
+}
+
+/*Lets enemy track the trackingCharacter by moving the enemy's 
+* velocity so as to have the x-y coordinates of the enemy try to align with the trackingCharacter
+*/
+function characterTracking(speed, enemy, trackingCharacter){
+
+    if(enemy.displayList != null){
+        //Track x coordinate
+        if(enemy.x < trackingCharacter.x){
+            enemy.setVelocityX(speed)
+        }else{
+            enemy.setVelocityX(-speed)
+        }
+
+        //Track y coordinate
+        if(enemy.y < trackingCharacter.y){
+            enemy.setVelocityY(speed)
+        }else{
+            enemy.setVelocityY(-speed)
+        }
+    }
+}
+
+//Returns a random index that is within the given game's Character array
+function pickRandomPlayer(game){
+    return Math.floor(Math.random() * game.characters.length)
 }
