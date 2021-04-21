@@ -42,47 +42,47 @@ class Character extends Phaser.Physics.Arcade.Image {
 class SoftwareProgrammer extends Character{
     constructor(game, xPosition, yPosition){
         super(game, xPosition, yPosition, 'red_circle');
-        this.sProgTasks = [];
-        this.sProgTasks.push(new Task("Implement feature.", 200));
-        this.sProgTasks.push(new Task("Create an Algorithm.", 200));
-        this.sProgTasks.push(new Task("Print your revisions of the code.", 200));
-        this.sProgTasks.push(new Task("Create a class diagram.", 200));
-        this.sProgTasks.push(new Task("Get permission from IT.", 200));
+        this.roleTasks = [];
+        this.roleTasks.push(new Task("Implement feature.", 200));
+        this.roleTasks.push(new Task("Create an Algorithm.", 200));
+        this.roleTasks.push(new Task("Print your revisions of the code.", 200));
+        this.roleTasks.push(new Task("Create a class diagram.", 200));
+        this.roleTasks.push(new Task("Get permission from IT.", 200));
     }
 }
 
 class SoftwareDeveloper extends Character{
     constructor(game, xPosition, yPosition){
         super(game, xPosition, yPosition, 'green_circle');
-        this.sDevTasks = [];
-        this.sDevTasks.push(new Task("Research new software designs.", 200));
-        this.sDevTasks.push(new Task("File your documentation.", 200));
-        this.sDevTasks.push(new Task("Provide maintenence.", 200));
-        this.sDevTasks.push(new Task("Make a sequence diagram.", 200));
-        this.sDevTasks.push(new Task("Make some calls for research purposes.", 200));
+        this.roleTasks = [];
+        this.roleTasks.push(new Task("Research new software designs.", 200));
+        this.roleTasks.push(new Task("File your documentation.", 200));
+        this.roleTasks.push(new Task("Provide maintenence.", 200));
+        this.roleTasks.push(new Task("Make a sequence diagram.", 200));
+        this.roleTasks.push(new Task("Make some calls for research purposes.", 200));
     }
 }
 
 class QualityTester extends Character{
     constructor(game, xPosition, yPosition){
         super(game, xPosition, yPosition, 'yellow_circle');
-        this.qaTasks = [];
-        this.qaTasks.push(new Task("Test the newest build.", 200));
-        this.qaTasks.push(new Task("Write down any bugs encountered.", 200));
-        this.qaTasks.push(new Task("File bug reports.", 200));
-        this.qaTasks.push(new Task("Print out screenshot.", 200));
-        this.qaTasks.push(new Task("Find out the reason why this bug exists.", 200));
+        this.roleTasks = [];
+        this.roleTasks.push(new Task("Test the newest build.", 200));
+        this.roleTasks.push(new Task("Write down any bugs encountered.", 200));
+        this.roleTasks.push(new Task("File bug reports.", 200));
+        this.roleTasks.push(new Task("Print out screenshot.", 200));
+        this.roleTasks.push(new Task("Find out the reason why this bug exists.", 200));
     }
 }
 
 class RequirementsEngineer extends Character{
     constructor(game, xPosition, yPosition){
         super(game, xPosition, yPosition, 'blue_circle');
-        this.rEngTasks = [];
-        this.rEngTasks.push(new Task("Make meeting with stakeholder.", 200));
-        this.rEngTasks.push(new Task("Brainstorm ideas.", 200));
-        this.rEngTasks.push(new Task("Make a diagram", 200));
-        this.rEngTasks.push(new Task("Assemble a powerpoint.", 200));
-        this.rEngTasks.push(new Task("Print out interview notes.", 200));
+        this.roleTasks = [];
+        this.roleTasks.push(new Task("Make meeting with stakeholder.", 200));
+        this.roleTasks.push(new Task("Brainstorm ideas.", 200));
+        this.roleTasks.push(new Task("Make a diagram", 200));
+        this.roleTasks.push(new Task("Assemble a powerpoint.", 200));
+        this.roleTasks.push(new Task("Print out interview notes.", 200));
     }
 }
