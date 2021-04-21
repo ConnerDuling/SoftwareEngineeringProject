@@ -28,26 +28,43 @@ class Enemy extends Phaser.Physics.Arcade.Image {
 
         //Make listener for all 4 Characters to damage Enemy
         for(var i = 0; i < game.characters.length; i++){
-            game.physics.add.overlap(this, game.characters[i], function takeDamage(enemy){
+            game.physics.add.overlap(this, game.characters[i], function takeDamage(enemy, character){
                 var eKey = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
                 if(Phaser.Input.Keyboard.JustDown(eKey)){
-                    //Add check of Character type for extra damage from specialists
-                    //if() Enemy Weakness == Player Role
-                    //      Deal 2 damage
-                    //else
-                    //      We just deal one damage
+                    
+                    //Check if the enemy type and character type match up for a weakness
+                    //If so, deal an extra damage to this enemy
+                    if(enemy.checkWeakness(character))
+                        enemy.health -= 1;
 
+                    //All Characters deal one damage
                     enemy.health -= 1;
 
                     //If the enemy has been reduced to zero or less, destroy it
+                    console.log(enemy.health)
                     if(enemy.health <= 0){
                         enemy.destroy();
                     } 
                 }
             });
         }
+    
+    this.checkWeakness = function(character){
+        
+        if(this instanceof Bug && character instanceof QualityTester)
+            return true
+        else if(this instanceof FeatureCreep && character instanceof RequirementsEngineer)
+            return true
+        else if(this instanceof Monkey && character instanceof SoftwareDeveloper)
+            return true
+
+        return false
+    }
+
     }
 }
+
+
 
 function plusOrMinus() {
     switch(Math.floor(Math.random() * 2)){
