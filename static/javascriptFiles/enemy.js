@@ -59,10 +59,11 @@ class Enemy extends Phaser.Physics.Arcade.Image {
                 return true
             else if(this instanceof Monkey && character instanceof SoftwareDeveloper)
                 return true
+            else if(this instanceof SpaghettiCode && character instanceof SoftwareProgrammer)
+                return true
 
             return false
         }
-
     }
 }
 
