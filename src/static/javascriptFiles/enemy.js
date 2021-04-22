@@ -29,8 +29,8 @@ class Enemy extends Phaser.Physics.Arcade.Image {
         //Make listener for all 4 Characters to damage Enemy
         for(var i = 0; i < game.characters.length; i++){
             game.physics.add.overlap(this, game.characters[i], function takeDamage(enemy, character){
-                var eKey = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-                if(Phaser.Input.Keyboard.JustDown(eKey)){
+                var rKey = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+                if(Phaser.Input.Keyboard.JustDown(rKey)){
                     
                     //Check if the enemy type and character type match up for a weakness
                     //If so, deal an extra damage to this enemy
