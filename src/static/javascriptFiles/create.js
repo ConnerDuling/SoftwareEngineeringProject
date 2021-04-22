@@ -50,6 +50,7 @@ function create ()
 var monkeyCount = 0;
 var bugCount = 0;
 var featureCreepCount = 0;
+var spaghettiCodeCount = 0;
 
 function addNewEnemyToGame(enemies, game){
 
@@ -59,24 +60,30 @@ function addNewEnemyToGame(enemies, game){
     var spawnX = game.cameras.main.width/2;
     var spawnY = game.cameras.main.height/2;
 
-    switch(Math.floor(Math.random() * 3)){
+    switch(Math.floor(Math.random() * 4)){
         case 0:
-            if(bugCount!=3){
-            enemies.push(new Bug(game, spawnX,
-                spawnY));
-            bugCount++}
+            if(bugCount<3){
+                enemies.push(new Bug(game, spawnX,
+                    spawnY));
+                bugCount++}
             break;
         case 1:
-            if(featureCreepCount!=3){
-            enemies.push(new FeatureCreep(game, spawnX,
-                spawnY));
-            featureCreepCount++}
+            if(featureCreepCount<3){
+                enemies.push(new FeatureCreep(game, spawnX,
+                    spawnY));
+                featureCreepCount++}
             break;
         case 2:
-            if(monkeyCount!=3){
-            enemies.push(new Monkey(game, spawnX,
-                spawnY));
-            monkeyCount++}
+            if(monkeyCount<3){
+                enemies.push(new Monkey(game, spawnX,
+                    spawnY));
+                monkeyCount++}
+            break;
+        default:
+            if(spaghettiCodeCount<3){
+                enemies.push(new SpaghettiCode(game, spawnX,
+                    spawnY));
+                spaghettiCodeCount++}
             break;
     }
 }
