@@ -1,11 +1,9 @@
 from flask import Flask
 import os
+from flask_socketio import SocketIO
 
 app = Flask('src')
 app.config['BASE_PATH'] = os.path.abspath(os.path.dirname(__file__))
-from flask_socketio import SocketIO
-
-socketio = SocketIO(app, async_mode="threading")
-
+socketio = SocketIO(app)
 
 from src.controllers import *
