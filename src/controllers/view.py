@@ -3,6 +3,10 @@ from src import app
 
 @app.route('/')
 def index():
+    return render_template('game.html')
+
+@app.route('/landing_page')
+def landing_page():
     return render_template('index.html')
 
 @app.route('/room')
