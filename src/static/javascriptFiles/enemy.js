@@ -245,8 +245,7 @@ class SpaghettiCode extends Enemy{
                 //prevents any movement at all 
                 character.speed = 0;
                 
-                //for now, the only way to remove stop is to wait it out, but if we would like to implement a way to mash buttons out of a stun/stop then we could remove this
-                //and implement it differently
+                //for now, the only way to remove stop is to destroy the SpaghettiCode
                 var stopConfig = {loop: false,
                     delay: 2 * 1000,
                     callback: restoreSpeed,
