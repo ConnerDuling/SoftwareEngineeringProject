@@ -231,8 +231,41 @@ class SpaghettiCode extends Enemy{
         callback: characterTracking,
         args: [100, this, game.characters[this.trackingEnemyId]]
         }
+        
 
         game.time.addEvent(trackConfig);
+         //when a character touches a spagetti monster, they cannot move, the method to escape this isn't decided yet but it would either be by button mashing or by a timer.
+         //if the former is implemented then they need invuln through out the time they are grappled so they cant be interfered by other monsters.
+         //if there is an event in some way where an enemy is puppyguarded by a spagetti monster, we should probably implement safeguards for this.
+         game.physics.add.overlap(this, game.characters, function grapple(enemy, character){
+            if(!(character instanceof SoftwareProgrammer) && character.invuln == 0){
+                //stops the character dead in their tracks
+                character.setVelocityX(0);
+                character.setVelocityY(0);
+                //prevents any movement at all 
+                character.speed = 0;
+                
+                //for now, the only way to remove stop is to wait it out, but if we would like to implement a way to mash buttons out of a stun/stop then we could remove this
+                //and implement it differently
+                var stopConfig = {loop: false,
+                    delay: 2 * 1000,
+                    callback: restoreSpeed,
+                    args: [character]
+                }
+                game.time.addEvent(stopConfig);
+                
+
+                //enables the invunlerability
+                character.invuln = 1;
+                var invulnInterval = {loop: false,
+                    delay: 2 * 1000,
+                    callback: removeInvuln,
+                    args: [character]
+                }   
+                game.time.addEvent(invulnInterval);
+            }
+         });
+
     }
 }
 
