@@ -17,8 +17,8 @@ class Enemy extends Phaser.Physics.Arcade.Image {
         if (bounceBool){
             this.setBounce(1,1);
 
-            //Sets initial velocity in one of four directions by multiplying constant by plusOrMinus()
-            this.setVelocity(150 * plusOrMinus(),150 * plusOrMinus());
+            //Sets initial velocity in one of four directions by multiplying constant by plusOrMinusOne()
+            this.setVelocity(150 * plusOrMinusOne(),150 * plusOrMinusOne());
         }        
 
         //Sets collission with inner walls
@@ -67,14 +67,13 @@ class Enemy extends Phaser.Physics.Arcade.Image {
     }
 }
 
-function plusOrMinus() {
+function plusOrMinusOne() {
     switch(Math.floor(Math.random() * 2)){
         case 0:
             return -1
         default:
             return 1 
     }
-    
 }
 
 function pickDirection(){
@@ -89,7 +88,6 @@ function pickDirection(){
 }
 
 class Monkey extends Enemy{
-
     constructor(game, xPosition, yPosition){
         super(game, xPosition, yPosition, true, true, 'monkey_enemy');
         game.physics.add.overlap(this, game.characters, function setUpDizzy(enemy, character){
@@ -103,21 +101,13 @@ class Monkey extends Enemy{
                 }
                 game.time.addEvent(dizzyConfig);
 
-                //enables the invulnerability
-                character.invuln = 1;
-                var invulnInterval = {loop: false,
-                    delay: 2 * 1000,
-                    callback: removeInvuln,
-                    args: [character]
-                }   
-                game.time.addEvent(invulnInterval);
+                game.time.addEvent(setUpInvulnerability(character));
             }
         });
     }
 };
 
 class FeatureCreep extends Enemy{
-
     constructor(game, xPosition, yPosition){
         super(game, xPosition, yPosition, true, false, 'feature_creep_enemy');
         game.physics.add.overlap(this, game.characters, function setUpSlow(enemy, character){
@@ -131,23 +121,11 @@ class FeatureCreep extends Enemy{
                 args: [character]
             }
             game.time.addEvent(slowConfig);
-
-            //enables the invunlerability
-            character.invuln = 1;
-            var invulnInterval = {loop: false,
-                delay: 2 * 1000,
-                callback: removeInvuln,
-                args: [character]
-            }   
-            game.time.addEvent(invulnInterval);
+  
+            game.time.addEvent(setUpInvulnerability(character));
             }
-
-            
-
         });
     }
-
-    
 };
     
 function restoreSpeed(character){
@@ -182,25 +160,28 @@ class Bug extends Enemy{
                 character.setVelocityX(character.speed * pickDirection());
                 character.setVelocityY(character.speed * pickDirection());
 
+                var fearConfig = {loop: false,
+                    delay: 2 * 1000,
+                    callback: undoFear,
+                    args: [character]
+                }
+                game.time.addEvent(fearConfig);
 
-            var fearConfig = {loop: false,
-                delay: 2 * 1000,
-                callback: undoFear,
-                args: [character]
-            }
-            game.time.addEvent(fearConfig);
-
-            character.invuln = 1;
-            var invulnInterval = {loop: false,
-                delay: 2 * 1000,
-                callback: removeInvuln,
-                args: [character]
-            }   
-            game.time.addEvent(invulnInterval);
+                game.time.addEvent(setUpInvulnerability(character));
             
             }
         });
     }
+}
+
+function setUpInvulnerability(character){
+    character.invuln = 1;
+    var invulnInterval = {loop: false,
+        delay: 2 * 1000,
+        callback: removeInvuln,
+        args: [character]
+    }   
+    return (invulnInterval);
 }
 
 function undoFear(character){
@@ -209,7 +190,6 @@ function undoFear(character){
 }
 
 function skitter(picture, skitterSpeed) {
-
     //Prevents Bug type from trying to move after
     //being removed from display list, and before
     //being removed from enemy array from Create
@@ -231,7 +211,6 @@ class SpaghettiCode extends Enemy{
         callback: characterTracking,
         args: [100, this, game.characters[this.trackingEnemyId]]
         }
-        
 
         game.time.addEvent(trackConfig);
          //when a character touches a spagetti monster, they cannot move, the method to escape this isn't decided yet but it would either be by button mashing or by a timer.
@@ -253,18 +232,9 @@ class SpaghettiCode extends Enemy{
                 }
                 game.time.addEvent(stopConfig);
                 
-
-                //enables the invunlerability
-                character.invuln = 1;
-                var invulnInterval = {loop: false,
-                    delay: 2 * 1000,
-                    callback: removeInvuln,
-                    args: [character]
-                }   
-                game.time.addEvent(invulnInterval);
+                game.time.addEvent(setUpInvulnerability(character));
             }
          });
-
     }
 }
 
