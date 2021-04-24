@@ -4,10 +4,9 @@
 <head>
     <meta charset='utf-8'>
     <title>Overclocked</title>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
     <script src="../static/phaser.js"></script>
 
-    <!--The js files that are to be used
-    for running the game-->
     <script src="../static/javascriptFiles/preload.js"></script>
     <script src="../static/javascriptFiles/create.js"></script>
     <script src="../static/javascriptFiles/update.js"></script>
@@ -15,30 +14,36 @@
     <script src="../static/javascriptFiles/enemy.js"></script>
     <script src="../static/javascriptFiles/tasks.js"></script>
     <script src="../static/javascriptFiles/workstation.js"></script>
-
-</head>
-<body>
-
     <script>
-    var config = {
-        type: Phaser.AUTO,
-        width: 800,
-        height: 600,
-        physics: {
-            default: 'arcade',
-        },
-        scene: {
-            //Calls the three main functions
-            //that run the game itself
-            preload: preload,
-            create: create,
-            update: update
-        }
-    };
-
-    var game = new Phaser.Game(config);
-
+        const socket = io();
     </script>
 
+</head>
+
+<body>
+
+
+    <script>
+
+        var config = {
+            type: Phaser.AUTO,
+            width: 800,
+            height: 600,
+            physics: {
+                default: 'arcade',
+            },
+            scene: {
+                //Calls the three main functions
+                //that run the game itself
+                preload: preload,
+                create: create,
+                update: update
+            }
+        };
+
+        var game = new Phaser.Game(config);
+
+    </script>
 </body>
+
 </html>

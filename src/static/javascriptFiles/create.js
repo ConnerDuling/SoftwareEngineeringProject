@@ -1,5 +1,26 @@
 function create ()
 {
+    // const socket = io.connect("http://localhost:5050");
+    const url = window.location.href;
+    const name = url.split("?")[1].split("&")[0].split("=")[1]
+    const roomid = url.split("?")[1].split("&")[1].split("=")[1]
+    const arr = {
+        name: name,
+        roomid: roomid
+    };
+
+    // socket.on('connect', function () {
+    //     socket.emit('join_room', {
+    //         username: name,
+    //         room: room
+    //     })
+    // });
+
+    // const socket = io();
+    socket.on('help', (data) => console.log(data['hi']));
+
+    socket.emit('joined_room', arr);
+
     //Carpet background of level
     this.carpet = this.add.image(0,0,'carpet').setOrigin(0,0);
     this.carpet.setScale(.6);
