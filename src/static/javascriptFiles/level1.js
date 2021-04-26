@@ -1,6 +1,6 @@
 class Level1 extends Phaser.Scene {
     constructor(){
-        super('Play')
+        super('PlayLevel1')
     }
     preload ()
     {
@@ -38,6 +38,9 @@ class Level1 extends Phaser.Scene {
         this.characters.push(new QualityTester(this, 700, 700));
         this.characters.push(new SoftwareProgrammer(this, 700, 100));
         this.characters.push(new SoftwareDeveloper(this, 100, 700));
+
+        //Make Character objects collide with each other
+        this.physics.add.collider(this.characters);
 
         //Set up enemy spawner for the Game
         var spawnDelaySeconds = 5
