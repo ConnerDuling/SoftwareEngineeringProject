@@ -19,8 +19,8 @@ class LevelSelect extends Phaser.Scene {
         this.levelThreeStartButton.on('pointerdown', this.startGame, this);
     }
 
-    createButton(width, height, imageName){
-        var buttonImage = this.add.image(width, height, imageName);
+    createButton(xCord, yCord, imageName){
+        var buttonImage = this.add.image(xCord, yCord, imageName);
         buttonImage.setScale(.4);
         buttonImage.setInteractive();
         return buttonImage
