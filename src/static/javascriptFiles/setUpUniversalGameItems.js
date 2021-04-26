@@ -59,3 +59,7 @@ function addNewEnemyToGame(enemies, game){
             break;
     }
 }
+
+function makeWall(game, xCord, yCord, height, width){
+    return game.add.rectangle(xCord,yCord,height,width, 0xffffff)
+}
