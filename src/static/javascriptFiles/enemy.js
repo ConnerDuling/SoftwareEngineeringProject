@@ -43,7 +43,7 @@ class Enemy extends Phaser.Physics.Arcade.Image {
                     //If the enemy has been reduced to zero or less, destroy it
                     console.log(enemy.health)
                     if(enemy.health <= 0){
-                        console.log(enemy)
+                        //Update appropriate count upon enemy being destroyed
                         if(enemy instanceof Bug){game.bugCount--}
                         else if(enemy instanceof SpaghettiCode){game.spaghettiCodeCount--}
                         else if(enemy instanceof Monkey){game.monkeyCount--}
