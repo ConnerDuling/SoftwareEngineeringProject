@@ -10,13 +10,13 @@ class LevelSelect extends Phaser.Scene {
     create(){
         var buttonOffset = 200;
         this.levelOneStartButton = this.createButton(this.cameras.main.width/2-buttonOffset,this.cameras.main.height/2, 'level1_button');
-        this.levelOneStartButton.on('pointerdown', this.startGame, this);
+        this.levelOneStartButton.on('pointerdown', this.startLV1, this);
 
         this.levelTwoStartButton = this.createButton(this.cameras.main.width/2,this.cameras.main.height/2, 'level2_button');
-        this.levelTwoStartButton.on('pointerdown', this.startGame, this);
+        this.levelTwoStartButton.on('pointerdown', this.startLV2, this);
 
         this.levelThreeStartButton = this.createButton(this.cameras.main.width/2+buttonOffset,this.cameras.main.height/2, 'level3_button');
-        this.levelThreeStartButton.on('pointerdown', this.startGame, this);
+        this.levelThreeStartButton.on('pointerdown', this.startLV3, this);
     }
 
     createButton(xCord, yCord, imageName){
@@ -26,7 +26,15 @@ class LevelSelect extends Phaser.Scene {
         return buttonImage
     }
 
-    startGame(){
+    startLV1(){
         this.scene.start('PlayLevel1');
+    }
+
+    startLV2(){
+        this.scene.start('PlayLevel2');
+    }
+    
+    startLV3(){
+        console.log("level doesnt exist yet.");
     }
 }
