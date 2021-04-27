@@ -132,7 +132,23 @@ function updateGameGoal(game){
             break;
         case 4:
             game.currentTaskText.setText('Done Done Done Done Done Done Done Done Done Done Done ');
+            console.log(game.counter);
             break;
         }
-    }    
+    }
+}
+
+function setUpTimer(game){
+    game.timeCounter = 0;
+
+    var timerConfig = {loop: true,
+        delay: 1000,
+        callback: updateTimer,
+        args: [game]
+    }
+    game.time.addEvent(timerConfig);
+}
+
+function updateTimer(game){
+    game.timeCounter++;
 }
