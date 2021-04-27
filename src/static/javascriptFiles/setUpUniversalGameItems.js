@@ -34,28 +34,28 @@ function addNewEnemyToGame(enemies, game){
 
     switch(Math.floor(Math.random() * 4)){
         case 0:
-            if(bugCount<3){
+            if(game.bugCount<1){
                 enemies.push(new Bug(game, spawnX,
                     spawnY));
-                bugCount++}
+                game.bugCount++}
             break;
         case 1:
-            if(featureCreepCount<3){
+            if(game.featureCreepCount<1){
                 enemies.push(new FeatureCreep(game, spawnX,
                     spawnY));
-                featureCreepCount++}
+                game.featureCreepCount++}
             break;
         case 2:
-            if(monkeyCount<3){
+            if(game.monkeyCount<1){
                 enemies.push(new Monkey(game, spawnX,
                     spawnY));
-                monkeyCount++}
+                game.monkeyCount++}
             break;
         default:
-            if(spaghettiCodeCount<3){
+            if(game.spaghettiCodeCount<1){
                 enemies.push(new SpaghettiCode(game, spawnX,
                     spawnY));
-                spaghettiCodeCount++}
+                game.spaghettiCodeCount++}
             break;
     }
 }

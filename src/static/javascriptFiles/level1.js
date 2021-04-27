@@ -13,6 +13,11 @@ class Level1 extends Phaser.Scene {
         this.carpet.setScale(.6);
 
         this.enemies = [];
+        //Limiters on enemy count for each enemy type
+        this.monkeyCount = 0;
+        this.bugCount = 0;
+        this.featureCreepCount = 0;
+        this.spaghettiCodeCount = 0;
 
         //Wall group for all office walls that are not window boudries
         this.walls = this.physics.add.staticGroup();
@@ -60,9 +65,3 @@ class Level1 extends Phaser.Scene {
     
     }
 }
-
-//Limiters on enemy count for each enemy type
-var monkeyCount = 0;
-var bugCount = 0;
-var featureCreepCount = 0;
-var spaghettiCodeCount = 0;
