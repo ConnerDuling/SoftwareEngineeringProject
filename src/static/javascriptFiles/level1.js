@@ -38,6 +38,8 @@ class Level1 extends Phaser.Scene {
 
         setUpTaskTrack(this);
 
+        setUpTimer(this);
+
     }
     update(){
 
