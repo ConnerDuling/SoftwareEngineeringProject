@@ -4,20 +4,11 @@ class Level1 extends Phaser.Scene {
     }
     preload ()
     {
-        loadGameImages(this)
+        preloadGameImages(this)
     }
     create ()
     {
-        //Carpet background of level
-        this.carpet = this.add.image(0,0,'carpet').setOrigin(0,0);
-        this.carpet.setScale(.6);
-
-        this.enemies = [];
-        //Limiters on enemy count for each enemy type
-        this.monkeyCount = 0;
-        this.bugCount = 0;
-        this.featureCreepCount = 0;
-        this.spaghettiCodeCount = 0;
+        makeCarpet(this);
 
         //Wall group for all office walls that are not window boudries
         this.walls = this.physics.add.staticGroup();
@@ -47,15 +38,7 @@ class Level1 extends Phaser.Scene {
         //Make Character objects collide with each other
         this.physics.add.collider(this.characters);
 
-        //Set up enemy spawner for the Game
-        var spawnDelaySeconds = 5
-        var spawnConfig = {
-            loop: true,
-            delay: (1000 * spawnDelaySeconds),
-            callback: addNewEnemyToGame,
-            args: [this.enemies, this]
-        }
-        this.time.addEvent(spawnConfig);
+        setUpEnemySpawnSystem(this);
 
     }
     update(){
