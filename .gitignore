@@ -1,2 +1,10 @@
 __pycache__
 .vscode
+
+# env file for linux
+bin
+lib
+pyvenv.cfg
+
+#env file for windows
+Scripts

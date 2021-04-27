@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to chat room {{ room }}</h1>
+    <div id="messages"></div>
+    <form action="">
+        <input type="text" placeholder="Enter your message here">
+        <button type="submit">Send</button>
+    </form>
+</body>
+<script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+<script>
+    const socket = io.connect("http://localhost:5050");
+
+    socket.on ('connect' , function () {
+        socket.emit('join_room', {
+            username: "{{ username }}",
+            room: "{{ room }}"
+        })
+    });
+
+    socket.on('join_room_announcement', function (data) {
+        console.log(data);
+        const newNode = document.createElement('div');
+        newNode.innerHTML = `${data.username} has joined the room`;
+        document.getElementById('messages').appendChild(newNode);
+
+    })
+</script>
+</html>
