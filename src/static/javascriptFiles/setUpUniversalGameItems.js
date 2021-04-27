@@ -1,5 +1,5 @@
 function preloadGameImages(game){
-    game.load.text('generic', 'static/assets/text/genericTasks.txt');
+    
     game.load.image('carpet', 'static/assets/images/CarpetBackground.png');
     
     game.load.image('green_circle', 'static/assets/images/CircleGreenTransperantBackground.png');
