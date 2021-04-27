@@ -35,6 +35,6 @@ class LevelSelect extends Phaser.Scene {
     }
     
     startLV3(){
-        console.log("level doesnt exist yet.");
+        this.scene.start('PlayLevel3');
     }
 }
