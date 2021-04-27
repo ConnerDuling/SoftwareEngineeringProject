@@ -28,15 +28,13 @@ class Character extends Phaser.Physics.Arcade.Image {
 
         //Colide with inner walls
         game.physics.add.collider(game.walls, this);
-
-        //Overlap with workstation
-        game.physics.add.overlap(game.workzones, this, function workzoneOverlap(){
-            var eKey = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-            if(Phaser.Input.Keyboard.JustDown(eKey)){
-                    game.taskPts += 1;
-            }
-        });
     }
+}
+
+function makeOverlap(game, workzone, character){
+    return game.physics.add.overlap(workzone, character, function workzoneOverlap(){
+        game.taskTrackFlag++;
+    });
 }
 
 class SoftwareProgrammer extends Character{

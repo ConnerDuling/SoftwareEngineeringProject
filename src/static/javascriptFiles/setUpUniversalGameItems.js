@@ -91,3 +91,46 @@ function makeCarpet(game){
     game.carpet = game.add.image(0,0,'carpet').setOrigin(0,0);
     game.carpet.setScale(.6);
 }
+
+function setUpTaskTrack(game){
+    game.taskTrackFlag = 0;
+    game.NextPhaseFlag = 0;
+    game.currentTaskText = game.add.text(0, 0, '');
+    game.currentTaskText.setDepth(100);
+    game.WorkingOverlapper = null;
+}
+
+function updateGameGoal(game){
+    if(game.NextPhaseFlag == game.taskTrackFlag){
+        //If a phase change is happening, destroy the current overlap event stored.
+        if(game.WorkingOverlapper != null){
+            game.WorkingOverlapper.destroy();
+            game.WorkingOverlapper = null;
+        }
+        switch(game.taskTrackFlag){
+        case 0:
+            game.WorkingOverlapper = makeOverlap(game, game.workzones[0], game.characters[0])
+            game.currentTaskText.setText('Requirements Engineer needs to get requirements');
+            game.NextPhaseFlag++;
+            break;
+        case 1:
+            game.WorkingOverlapper = makeOverlap(game, game.workzones[1], game.characters[1])
+            game.currentTaskText.setText('Software Developer needs to plan out the code');
+            game.NextPhaseFlag++;
+            break;
+        case 2:
+            game.WorkingOverlapper = makeOverlap(game, game.workzones[2], game.characters[2])
+            game.currentTaskText.setText('Software Programmer needs to impliment the design');
+            game.NextPhaseFlag++;
+            break;
+        case 3:
+            game.WorkingOverlapper = makeOverlap(game, game.workzones[3], game.characters[3])
+            game.currentTaskText.setText('Quality Assurance Tester needs to debug the program');
+            game.NextPhaseFlag++;
+            break;
+        case 4:
+            game.currentTaskText.setText('Done Done Done Done Done Done Done Done Done Done Done ');
+            break;
+        }
+    }    
+}
