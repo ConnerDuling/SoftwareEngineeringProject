@@ -30,21 +30,23 @@ class Level2 extends Phaser.Scene {
         
         //Character objects that belong to this (Scene)
         this.characters = []
-        this.characters.push(new RequirementsEngineer(this, 100, 100));
-        this.characters.push(new QualityTester(this, 700, 700));
-        this.characters.push(new SoftwareProgrammer(this, 700, 100));
-        this.characters.push(new SoftwareDeveloper(this, 100, 700));
+        this.characters.push(new RequirementsEngineer(this, 700, 700));
+        this.characters.push(new SoftwareProgrammer(this, 100, 700));
+        this.characters.push(new SoftwareDeveloper(this, 700, 100));
+        this.characters.push(new QualityTester(this, 100, 100));
 
         //Make Character objects collide with each other
         this.physics.add.collider(this.characters);
 
         setUpEnemySpawnSystem(this);
 
+        setUpTaskTrack(this);
+
     }
     update(){
 
         characterMovement(this);
-        this.scoreTest.setText('Points: ' + this.taskPts);
+        updateGameGoal(this);
     
     }
 }
