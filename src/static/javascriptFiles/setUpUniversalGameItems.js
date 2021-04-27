@@ -107,6 +107,8 @@ function updateGameGoal(game){
             game.WorkingOverlapper.destroy();
             game.WorkingOverlapper = null;
         }
+
+        //Check what task needs to be completed next based on the taskTrackFlag
         switch(game.taskTrackFlag){
         case 0:
             game.WorkingOverlapper = makeOverlap(game, game.workzones[0], game.characters[0])
