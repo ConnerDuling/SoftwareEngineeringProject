@@ -13,8 +13,10 @@ class Level2 extends Phaser.Scene {
         //Wall group for all office walls that are not window boudries
         this.walls = this.physics.add.staticGroup();
 
-        this.walls.add(makeWall(this, this.cameras.main.width/2,this.cameras.main.height/2,10,350, 0xffffff))
-        this.walls.add(makeWall(this, this.cameras.main.width/2,this.cameras.main.height/2,450,10, 0xffffff))
+        this.walls.add(makeWall(this, this.cameras.main.width/4,this.cameras.main.height-200,20,450, 0xffffff))
+        this.walls.add(makeWall(this, this.cameras.main.width/2,this.cameras.main.height-400,20,450, 0xffffff))
+        this.walls.add(makeWall(this, (this.cameras.main.width/4)*3,this.cameras.main.height-200,20,450, 0xffffff))
+        
 
         //Workzone objects
         this.workzones = [4]
