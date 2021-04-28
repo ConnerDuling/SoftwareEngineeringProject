@@ -26,10 +26,6 @@ class Level2 extends Phaser.Scene {
         this.workzones[2] = new GreenWorkStation(this, 0,this.cameras.main.height-workStationOffset);
         this.workzones[3] = new YellowWorkStation(this, this.cameras.main.width-workStationOffset,this.cameras.main.height-workStationOffset)
         
-        this.taskPts = 0;
-        this.scoreTest = this.add.text(0, 0, '');
-        this.scoreTest.setDepth(100);
-        
         //Character objects that belong to this (Scene)
         this.characters = []
         this.characters.push(new RequirementsEngineer(this, 700, 700));
@@ -43,6 +39,8 @@ class Level2 extends Phaser.Scene {
         setUpEnemySpawnSystem(this);
 
         setUpTaskTrack(this);
+
+        setUpTimer(this);
 
     }
     update(){
