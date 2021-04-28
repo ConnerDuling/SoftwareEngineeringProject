@@ -1,7 +1,7 @@
 class Level3 extends Phaser.Scene {
     constructor(){
         super('PlayLevel3')
-    }s
+    }
     preload ()
     {
         preloadGameImages(this)
