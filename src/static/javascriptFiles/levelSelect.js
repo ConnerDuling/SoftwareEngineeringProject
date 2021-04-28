@@ -1,6 +1,6 @@
 class LevelSelect extends Phaser.Scene {
     constructor(){
-        super()
+        super('LevelSelect')
     }
     preload(){
         this.load.image('level1_button','static/assets/images/Level_Icon_1.png');
