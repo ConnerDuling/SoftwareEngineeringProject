@@ -71,6 +71,12 @@ function setUpEnemySpawnSystem(game){
     game.featureCreepCount = 0;
     game.spaghettiCodeCount = 0;
 
+    game.monkeyKills = 0;
+    game.bugKills = 0;
+    game.featureCreapKills = 0;
+    game.spaghettiCodeKills = 0;
+
+
     //Set up enemy spawner for the Game
     var spawnDelaySeconds = 5
     var spawnConfig = {
@@ -132,7 +138,12 @@ function updateGameGoal(game){
             break;
         case 4:
             game.currentTaskText.setText('Done Done Done Done Done Done Done Done Done Done Done ');
-            console.log(game.counter);
+            game.scene.start('GameOver',
+                {totalTime: game.timeCounter,
+                    bugKills: game.bugKills,
+                    monkeyKills: game.monkeyKills,
+                    featureCreapKills: game.featureCreapKills,
+                    spaghettiCodeKills: game.spaghettiCodeKills});
             break;
         }
     }
