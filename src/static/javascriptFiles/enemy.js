@@ -44,10 +44,18 @@ class Enemy extends Phaser.Physics.Arcade.Image {
                     console.log(enemy.health)
                     if(enemy.health <= 0){
                         //Update appropriate count upon enemy being destroyed
-                        if(enemy instanceof Bug){game.bugCount--}
-                        else if(enemy instanceof SpaghettiCode){game.spaghettiCodeCount--}
-                        else if(enemy instanceof Monkey){game.monkeyCount--}
-                        else if(enemy instanceof FeatureCreep){game.featureCreepCount--}
+                        if(enemy instanceof Bug)
+                            {game.bugCount--;
+                                game.bugKills++;}
+                        else if(enemy instanceof SpaghettiCode)
+                            {game.spaghettiCodeCount--;
+                                game.spaghettiCodeKills++;}
+                        else if(enemy instanceof Monkey)
+                            {game.monkeyCount--;
+                                game.monkeyKills++;}
+                        else if(enemy instanceof FeatureCreep)
+                            {game.featureCreepCount--;
+                                game.featureCreapKills++;}
                         enemy.destroy();
                     } 
                 }
